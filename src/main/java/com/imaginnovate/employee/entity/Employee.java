@@ -20,6 +20,7 @@ public class Employee {
         private String lastName;
         private String email;
         @ElementCollection
+        @CollectionTable(name = "phone_numbers", joinColumns = @JoinColumn(name = "employee_id"))
         private List<String> phoneNumbers;
         private String doj;
         private Double salary;
