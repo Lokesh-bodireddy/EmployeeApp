@@ -2,7 +2,7 @@
 
 #Steps:
 #1. employee_management git 
-clone https://github.com/maharshi49/employee.git
+clone https://github.com/Lokesh-bodireddy/EmployeeApp
 
 #2. Create the database CREATE DATABASE mytestdb;
 
