@@ -39,14 +39,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     private static double calculateYearlySalary(Employee employee) {
-        LocalDate currentDate = LocalDate.now();
         LocalDate doj = LocalDate.parse(employee.getDoj());
-        int monthsWorked = currentDate.getYear() == doj.getYear()
-                ? currentDate.getMonthValue() - doj.getMonthValue() + 1
-                : 12 - doj.getMonthValue() + 1;
-
+        LocalDate financeYearEndDt = LocalDate.of(LocalDate.now().getYear(), 4,1);
+        LocalDate financeYearStartDt = LocalDate.of(financeYearEndDt.minusYears(1).getYear(),4,1);
+        financeYearStartDt = doj.isAfter(financeYearStartDt)? doj: financeYearStartDt;
+        Period period = Period.between(financeYearStartDt,financeYearEndDt);
         double monthlySalary = employee.getSalary();
-        return monthlySalary * monthsWorked;
+        double daySalary = monthlySalary/30;
+        double yealrySalary = 0.0;
+        if(period.getYears() == 1 ) yealrySalary = monthlySalary * 12;
+        else yealrySalary = (monthlySalary * period.getMonths()) + (daySalary * period.getDays());
+        return yealrySalary;
     }
 
     private static Map<String, Object> getTaxDeductionsResponse(Employee employee) {
