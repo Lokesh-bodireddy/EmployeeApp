@@ -17,8 +17,8 @@ spring.datasource.password=pas123
   #Register the user with following API using Post Method
   http://localhost:8080/api/v1/employees
 
-  #Login the user with following API using Post Method, it will returns the generated token
-  localhost:8080/api/v1/auth/login?userEmail=<UserEmail>&password=password
+  #Login the user with following API using Post Method, it will returns the generated token. replace the userEmail with user registered mail.
+  localhost:8080/api/v1/auth/login?userEmail={UserEmail}&password=password
 
   #To verify the taxation details with following API using Get Method 
   http://localhost:8080/api/v1/employees/{employeeId}/tax-deductions
