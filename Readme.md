@@ -12,7 +12,14 @@ spring.datasource.password=pas123
 #4. Start the Spring Boot Application.
 
 #5. Open the postman tool and use following API end points for testing
+#Register the user with following API using Post Method 
 http://localhost:8080/api/v1/employees
-http://localhost:8080/api/v1/employees/{employeeId}/tax-deductions
+
+#Login the user with following API using Post Method, it will returns the generated token. replace the userEmail with user registered mail. http://localhost:8080/api/v1/auth/login?userEmail={UserEmail}&password=password
+
+#To verify the taxation details with following API using Get Method 
+http://localhost:8080/api/v1/employees/{employeeId}/tax-deductions 
+
+take note: This url requires authencation info, for this we need to setup the above generated token in following way, if you not setup , you will not able to access this page. Goto Authorization tab -> select "Bearer Token" type -> insert the token into the text box.
 
 
